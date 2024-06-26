@@ -14,6 +14,16 @@ const config: Config = {
       lineHeight: {
         relaxed: '1.6',
       },
+      keyframes: {
+        pulse: {
+          '0%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(1.2)' },
+          '100%': { transform: 'scale(1)' },
+        },
+      },
+      animation: {
+        pulse: 'pulse 1s ease-in-out infinite',
+      },
     },
   },
   plugins: [],
