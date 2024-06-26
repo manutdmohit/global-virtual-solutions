@@ -1,3 +1,12 @@
+import {
+  FaClock,
+  FaCheckCircle,
+  FaTools,
+  FaLock,
+  FaHeadset,
+  FaEye,
+} from 'react-icons/fa';
+
 const SLAS = () => {
   return (
     <section className="py-16 bg-white">
@@ -10,7 +19,8 @@ const SLAS = () => {
           support.
         </p>
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div className="bg-gray-100 p-6 rounded-lg shadow-lg">
+          <div className="bg-gray-100 p-6 rounded-lg shadow-lg transform transition duration-300 hover:scale-105">
+            <FaClock className="text-blue-500 text-4xl mb-4 mx-auto" />
             <h3 className="text-2xl font-bold text-gray-800 mb-4">
               Response Time
             </h3>
@@ -19,7 +29,8 @@ const SLAS = () => {
               24 hours for non-critical issues.
             </p>
           </div>
-          <div className="bg-gray-100 p-6 rounded-lg shadow-lg">
+          <div className="bg-gray-100 p-6 rounded-lg shadow-lg transform transition duration-300 hover:scale-105">
+            <FaCheckCircle className="text-blue-500 text-4xl mb-4 mx-auto" />
             <h3 className="text-2xl font-bold text-gray-800 mb-4">
               Uptime Commitment
             </h3>
@@ -28,7 +39,8 @@ const SLAS = () => {
               reliable access to your operations.
             </p>
           </div>
-          <div className="bg-gray-100 p-6 rounded-lg shadow-lg">
+          <div className="bg-gray-100 p-6 rounded-lg shadow-lg transform transition duration-300 hover:scale-105">
+            <FaTools className="text-blue-500 text-4xl mb-4 mx-auto" />
             <h3 className="text-2xl font-bold text-gray-800 mb-4">
               Issue Resolution
             </h3>
@@ -37,7 +49,8 @@ const SLAS = () => {
               problems and within 3 days for non-critical problems.
             </p>
           </div>
-          <div className="bg-gray-100 p-6 rounded-lg shadow-lg">
+          <div className="bg-gray-100 p-6 rounded-lg shadow-lg transform transition duration-300 hover:scale-105">
+            <FaLock className="text-blue-500 text-4xl mb-4 mx-auto" />
             <h3 className="text-2xl font-bold text-gray-800 mb-4">
               Data Security
             </h3>
@@ -46,7 +59,8 @@ const SLAS = () => {
               encryption and security protocols.
             </p>
           </div>
-          <div className="bg-gray-100 p-6 rounded-lg shadow-lg">
+          <div className="bg-gray-100 p-6 rounded-lg shadow-lg transform transition duration-300 hover:scale-105">
+            <FaHeadset className="text-blue-500 text-4xl mb-4 mx-auto" />
             <h3 className="text-2xl font-bold text-gray-800 mb-4">
               Customer Support
             </h3>
@@ -55,7 +69,8 @@ const SLAS = () => {
               any issues or queries you may have.
             </p>
           </div>
-          <div className="bg-gray-100 p-6 rounded-lg shadow-lg">
+          <div className="bg-gray-100 p-6 rounded-lg shadow-lg transform transition duration-300 hover:scale-105">
+            <FaEye className="text-blue-500 text-4xl mb-4 mx-auto" />
             <h3 className="text-2xl font-bold text-gray-800 mb-4">
               Service Monitoring
             </h3>
