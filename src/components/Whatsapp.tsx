@@ -1,6 +1,6 @@
 import { FaCommentDots } from 'react-icons/fa';
 
-const number = 'https:wa.me/+9779867154844';
+const number = 'https://wa.me/+9779867154844';
 
 const WhatsAppButton = () => {
   return (
