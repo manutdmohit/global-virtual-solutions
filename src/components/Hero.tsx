@@ -22,7 +22,7 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5 }}
         >
-          Global Virtual Solutions
+          Hire Remote Employees
         </motion.h1>
         <motion.p
           className="text-base md:text-lg lg:text-2xl mb-6 drop-shadow-md"
@@ -30,8 +30,7 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1 }}
         >
-          Revolutionizing the way businesses operate by providing top-tier
-          virtual employee services across the globe.
+          Work with top talent from around the world, right from your office.
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: -50 }}
@@ -40,9 +39,22 @@ const Hero = () => {
         >
           <Link
             href="/contact"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full transition duration-300 ease-in-out transform hover:scale-105"
+            className='className="bg-blue-500 bg-blue-700 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full transition duration-300 ease-in-out transform hover:scale-105"'
           >
             Get Started
+          </Link>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 2 }}
+          className="mt-8"
+        >
+          <Link
+            href="/services"
+            className="bg-white hover:bg-gray-200 text-blue-500 font-bold py-3 px-6 rounded-full transition duration-300 ease-in-out transform hover:scale-105"
+          >
+            Learn More
           </Link>
         </motion.div>
       </motion.div>
