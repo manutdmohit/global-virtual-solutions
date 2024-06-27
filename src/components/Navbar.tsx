@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { FaBars, FaTimes, FaChevronDown, FaChevronRight } from 'react-icons/fa';
 
@@ -18,7 +18,6 @@ const navBarData: MenuItem[] = [
   },
   {
     label: 'Services',
-    url: '/',
     submenu: [
       {
         label: 'IT Outsourcing',
@@ -66,20 +65,31 @@ const navBarData: MenuItem[] = [
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [hoveredSubMenu, setHoveredSubMenu] = useState<string | null>(null);
-  const [hoveredChildMenu, setHoveredChildMenu] = useState<string | null>(null);
+  const [activeSubMenu, setActiveSubMenu] = useState<string | null>(null);
+  const [activeChildMenu, setActiveChildMenu] = useState<string | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
-  const handleSubMenuHover = (submenuLabel: string | null) => {
-    setHoveredSubMenu(submenuLabel);
-    setHoveredChildMenu(null); // Reset child menu when hovering a new submenu
+  const handleSubMenuToggle = (submenuLabel: string) => {
+    setActiveSubMenu((prev) => (prev === submenuLabel ? null : submenuLabel));
+    setActiveChildMenu(null); // Reset child menu when toggling a submenu
   };
 
-  const handleChildMenuHover = (childLabel: string | null) => {
-    setHoveredChildMenu(childLabel);
+  const handleChildMenuToggle = (childLabel: string) => {
+    setActiveChildMenu((prev) => (prev === childLabel ? null : childLabel));
   };
 
   const renderMenuItems = (
@@ -91,9 +101,9 @@ const Navbar = () => {
       <ul
         className={`menu ${
           isSubmenu
-            ? 'absolute left-full top-0 mt-0 w-56 bg-gray-700 text-white shadow-lg rounded-md py-2 z-50'
+            ? 'absolute md:left-full md:top-0 md:mt-0 w-56 bg-gray-700 text-white shadow-lg rounded-md py-2 z-50'
             : 'md:flex md:space-x-4'
-        }`}
+        } ${isOpen && !isSubmenu ? 'block' : 'hidden md:block'}`}
       >
         {items.map((item, index) => (
           <li
@@ -101,14 +111,8 @@ const Navbar = () => {
             className={`relative group ${
               isSubmenu ? 'block px-4 py-2' : 'block py-2 px-2'
             }`}
-            onMouseEnter={() =>
-              isSubmenu
-                ? handleChildMenuHover(item.label)
-                : handleSubMenuHover(item.label)
-            }
-            onMouseLeave={() =>
-              isSubmenu ? handleChildMenuHover(null) : handleSubMenuHover(null)
-            }
+            onMouseEnter={() => !isMobile && setActiveSubMenu(item.label)}
+            onMouseLeave={() => !isMobile && setActiveSubMenu(null)}
           >
             {item.url ? (
               <Link
@@ -122,7 +126,10 @@ const Navbar = () => {
                 {item.label}
               </Link>
             ) : (
-              <div className="hover:text-gray-400 transition duration-300 flex items-center cursor-pointer">
+              <div
+                className="hover:text-gray-400 transition duration-300 flex items-center cursor-pointer"
+                onClick={() => isMobile && handleSubMenuToggle(item.label)}
+              >
                 {item.label}{' '}
                 {item.submenu &&
                   (isSubmenu ? (
@@ -132,39 +139,50 @@ const Navbar = () => {
                   ))}
               </div>
             )}
-            {item.submenu && !isSubmenu && hoveredSubMenu === item.label && (
+            {item.submenu && !isSubmenu && activeSubMenu === item.label && (
               <ul
                 className="absolute left-0 mt-2 w-56 bg-gray-700 text-white shadow-lg rounded-md py-2 z-50"
-                onMouseEnter={() => handleChildMenuHover(null)}
-                onMouseLeave={() => handleChildMenuHover(null)}
+                onMouseEnter={() => setActiveChildMenu(null)}
+                onMouseLeave={() => setActiveChildMenu(null)}
               >
                 {item.submenu.map((subItem, subIndex) => (
                   <li
                     key={subIndex}
                     className="relative group"
-                    onMouseEnter={() => handleChildMenuHover(subItem.label)}
-                    onMouseLeave={() => handleChildMenuHover(null)}
+                    onMouseEnter={() =>
+                      !isMobile && setActiveChildMenu(subItem.label)
+                    }
+                    onMouseLeave={() => !isMobile && setActiveChildMenu(null)}
                   >
                     {subItem.url ? (
                       <Link
                         href={subItem.url}
-                        className="text-sm hover:text-gray-400 hover:bg-red-500  transition duration-300 block px-4 py-2"
+                        className="text-sm hover:text-gray-400 hover:bg-red-500 transition duration-300 block px-4 py-2"
                       >
                         {subItem.label}
                       </Link>
                     ) : (
-                      <div className="hover:text-gray-400  hover:bg-red-500 transition duration-300 flex items-center cursor-pointer px-4 py-2">
+                      <div
+                        className="hover:text-gray-400 hover:bg-red-500 transition duration-300 flex items-center cursor-pointer px-4 py-2"
+                        onClick={() =>
+                          isMobile && handleChildMenuToggle(subItem.label)
+                        }
+                      >
                         {subItem.label}{' '}
                         {subItem.submenu && <FaChevronRight className="ml-1" />}
                       </div>
                     )}
-                    {subItem.submenu && hoveredChildMenu === subItem.label && (
-                      <ul className="absolute left-full top-0 mt-0 w-56 bg-gray-700 text-white shadow-lg rounded-md py-2 z-50">
+                    {subItem.submenu && activeChildMenu === subItem.label && (
+                      <ul
+                        className={`${
+                          isMobile ? 'block' : 'hidden md:block'
+                        } md:absolute md:left-full md:top-0 mt-2 md:mt-0 w-56 bg-gray-700 text-white shadow-lg rounded-md py-2 z-50 md:bg-gray-800`}
+                      >
                         {subItem.submenu.map((childItem, childIndex) => (
                           <li key={childIndex} className="relative group">
                             <Link
                               href={childItem.url || '#'}
-                              className="text-sm hover:text-gray-400 hover:bg-red-500  transition duration-300 block px-4 py-2"
+                              className="text-sm hover:text-gray-400 hover:bg-red-500 transition duration-300 block px-4 py-2"
                             >
                               {childItem.label}
                             </Link>
