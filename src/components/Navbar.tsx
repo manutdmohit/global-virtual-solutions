@@ -8,7 +8,6 @@ interface MenuItem {
   label: string;
   url?: string;
   submenu?: MenuItem[];
-  type?: string;
 }
 
 const navBarData: MenuItem[] = [
@@ -124,8 +123,7 @@ const navBarData: MenuItem[] = [
   },
   {
     label: 'SEND US YOUR REQUIREMENT',
-    url: '/contact',
-    type: 'button',
+    url: '/get-started',
   },
 ];
 

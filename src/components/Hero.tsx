@@ -38,7 +38,7 @@ const Hero = () => {
           transition={{ duration: 1, delay: 1.5 }}
         >
           <Link
-            href="/contact"
+            href="/get-started"
             className='className="bg-blue-500 bg-blue-700 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full transition duration-300 ease-in-out transform hover:scale-105"'
           >
             Get Started
