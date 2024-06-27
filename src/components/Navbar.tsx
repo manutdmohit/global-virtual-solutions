@@ -45,6 +45,72 @@ const navBarData: MenuItem[] = [
         label: 'Hire Developers',
         url: '/services/hire-developers',
       },
+      {
+        label: 'Graphic & Web Design',
+        url: '/services/graphic-web-design',
+      },
+      {
+        label: 'Finance And Accounts',
+        url: '/services/graphic-web-design',
+      },
+      {
+        label: 'Embedded Development',
+        url: '/services/graphic-web-design',
+      },
+      {
+        label: 'Engineers And Architects',
+        url: '/services/graphic-web-design',
+      },
+      {
+        label: 'Legal Process OutSourcing',
+        url: '/services/graphic-web-design',
+      },
+      {
+        label: 'Mobile Apps Development',
+        url: '/services/graphic-web-design',
+      },
+      {
+        label: 'Hire Virtual Assistant',
+        url: '/services/graphic-web-design',
+      },
+      {
+        label: 'Medical Process Outsourcing',
+        url: '/services/graphic-web-design',
+      },
+      // Add more services here
+    ],
+  },
+  {
+    label: 'Resources',
+    submenu: [
+      {
+        label: 'FAQs',
+        url: '/resources/faqs',
+      },
+      {
+        label: 'Videos',
+        url: '/resources/videos',
+      },
+      {
+        label: 'Articles',
+        url: '/resources/articles',
+      },
+      {
+        label: 'Blog',
+        url: '/resources/blog',
+      },
+      {
+        label: 'Guides',
+        url: '/resources/guides',
+      },
+      {
+        label: 'Ebooks',
+        url: '/resources/ebooks',
+      },
+      {
+        label: 'Awards And Recognition',
+        url: '/resources/award-recognition',
+      },
       // Add more services here
     ],
   },
@@ -158,7 +224,7 @@ const Navbar = () => {
                     {subItem.url ? (
                       <Link
                         href={subItem.url}
-                        className="text-sm hover:text-gray-400 hover:bg-red-500 transition duration-300 block px-4 py-2"
+                        className="  text-sm hover:text-gray-400 hover:bg-red-500 transition duration-300 block px-4 py-2"
                       >
                         {subItem.label}
                       </Link>
@@ -177,7 +243,7 @@ const Navbar = () => {
                       <ul
                         className={`${
                           isMobile ? 'block' : 'hidden md:block'
-                        } md:absolute md:left-full md:top-0 mt-2 md:mt-0 w-56 bg-gray-700 text-white shadow-lg rounded-md py-2 z-50 md:bg-gray-800`}
+                        } md:absolute md:left-full md:top-0 mt-2 md:mt-0 w-56 bg-blue-700 text-white shadow-lg rounded-md py-2 z-50`}
                       >
                         {subItem.submenu.map((childItem, childIndex) => (
                           <li key={childIndex} className="relative group">
