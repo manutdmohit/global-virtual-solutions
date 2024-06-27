@@ -7,7 +7,6 @@ import Process from '@/components/Process';
 import SLAS from '@/components/SLAS';
 import Services from '@/components/Services';
 import Testimonials from '@/components/Testimonials';
-import WhatsAppButton from '@/components/Whatsapp';
 
 export default function Home() {
   return (
@@ -21,7 +20,6 @@ export default function Home() {
       <SLAS />
       <Process />
       <Onboarding />
-      <WhatsAppButton />
     </>
   );
 }
