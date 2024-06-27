@@ -122,6 +122,7 @@ const Navbar = () => {
                     ? 'bg-red-500 inline py-4 px-1 text-sm'
                     : ''
                 }`}
+                onClick={toggleMenu}
               >
                 {item.label}
               </Link>
